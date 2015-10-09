@@ -1,11 +1,17 @@
 WorldCubeAssociation = {};
 
+// As of 2015-08-09, this list of fields the /api/v0/me route provides is
+// currently undocumented. This list came from the worldcubeassociation.org
+// source code, available here:
+// https://github.com/cubing/worldcubeassociation.org/blob/master/WcaOnRails/app/controllers/api/v0/api_controller.rb#L15
 WorldCubeAssociation.whitelistedFields = [
   'id',
-  'wca_id',
-  'email',
   'name',
+  'email',
+  'wca_id',
   'created_at',
+  'updated_at',
+  'avatar',
 ];
 
 var querystring = Npm.require('querystring');

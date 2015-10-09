@@ -1,22 +1,22 @@
 Package.describe({
   name: 'jfly:accounts-worldcubeassociation',
-  version: '1.0.0',
+  version: '1.0.2',
   summary: 'An OAuth login service for worldcubeassociation.org',
-  git: 'https://github.com/jfly/meteor-worldcubeassociation-oauth.git',
+  git: 'https://github.com/jfly/meteor-worldcubeassociation-oauth.git'
 });
 
 Package.onUse(function(api) {
   api.versionsFrom('1.2.0.2');
 
-  api.use('ecmascript');
-  api.use('jfly:worldcubeassociation@1.0.0');
+  api.use('accounts-base', ['client', 'server']);
+  // Export Accounts (etc) to packages using this one.
+  api.imply('accounts-base', ['client', 'server']);
+  api.use('accounts-oauth', ['client', 'server']);
+  api.use('jfly:worldcubeassociation@1.0.1', ['client', 'server']);
+  api.use('underscore', 'server');
 
-  api.addFiles('accounts-worldcubeassociation.js');
+  api.addFiles('worldcubeassociation_login_button.css', 'client');
+
+  api.addFiles("worldcubeassociation.js");
 });
 
-Package.onTest(function(api) {
-  api.use('ecmascript');
-  api.use('tinytest');
-  api.use('jfly:accounts-worldcubeassociation');
-  api.addFiles('accounts-worldcubeassociation-tests.js');
-});
