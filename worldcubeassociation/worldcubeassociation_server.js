@@ -11,7 +11,7 @@ WorldCubeAssociation.whitelistedFields = [
   'wca_id',
   'dob',
   'gender',
-  'country',
+  'country_iso2',
   'created_at',
   'updated_at',
   'avatar',
