@@ -20,3 +20,8 @@ packages maintained by MDG.
 ## Example
 
 - Check out the live demo at <http://wca-oauth-demo.meteor.com/>! Source code available [here](https://github.com/jfly/meteor-worldcubeassociation-oauth/tree/master/demo).
+
+## Publishing accounts-worldcubeassociation or worldcubeassociation
+
+- Edit `package.js` and bump version number.
+- `meteor publish`

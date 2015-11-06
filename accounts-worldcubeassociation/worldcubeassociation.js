@@ -23,6 +23,8 @@ if (Meteor.isClient) {
       'services.worldcubeassociation.id',
       'services.worldcubeassociation.name',
       'services.worldcubeassociation.wca_id',
+      'services.worldcubeassociation.gender',
+      'services.worldcubeassociation.country',
     ]
   });
 }
