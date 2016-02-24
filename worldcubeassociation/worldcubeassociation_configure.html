@@ -11,13 +11,16 @@
       Visit <a href="https://www.worldcubeassociation.org/oauth/applications" target="_blank">https://www.worldcubeassociation.org/oauth/applications</a>.
     </li>
     <li>
-      Click "New Application".
+      Click "New".
     </li>
     <li>
       Fill in "Name".
     </li>
     <li>
       Under "Redirect URI", enter <span class="url">{{siteUrl}}</span> (add <span class="url">urn:ietf:wg:oauth:2.0:oob</span> first if not using https).
+    </li>
+    <li>
+      Under "Scopes", enter at least "email".
     </li>
     <li>
       Click "Submit".
