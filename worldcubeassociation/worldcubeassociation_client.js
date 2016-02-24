@@ -22,19 +22,20 @@ WorldCubeAssociation.requestCredential = function (options, credentialRequestCom
 
   var credentialToken = Random.secret();
 
-  var scope = "email";
+  var scopes = [ 'public', 'email' ];
   if (options && options.requestPermissions) {
-    scope = options.requestPermissions.join(',');
+    scopes = Array.from(new Set(scopes.concat(options.requestPermissions)));
   }
+  var scope = encodeURIComponent(scopes.join(' '));
 
   var loginStyle = OAuth._loginStyle('worldcubeassociation', config, options);
 
   var loginUrl =
-        'https://www.worldcubeassociation.org/oauth/authorize?client_id=' + config.appId +
-        '&redirect_uri=' + OAuth._redirectUri('worldcubeassociation', config) +
-        '&state=' + OAuth._stateParam(loginStyle, credentialToken) +
-        '&scope=' + scope +
-        '&response_type=code';
+    'https://www.worldcubeassociation.org/oauth/authorize?client_id=' + config.appId +
+    '&redirect_uri=' + OAuth._redirectUri('worldcubeassociation', config) +
+    '&state=' + OAuth._stateParam(loginStyle, credentialToken) +
+    '&scope=' + scope +
+    '&response_type=code';
 
   OAuth.launchLogin({
     loginService: "worldcubeassociation",
