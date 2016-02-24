@@ -25,3 +25,7 @@ packages maintained by MDG.
 
 - Edit `package.js` and bump version number.
 - `meteor publish`
+
+## Updating http://wca-oauth-demo.meteor.com/ demo
+
+- `meteor deploy http://wca-oauth-demo.meteor.com/` inside the `demo/` directory.
