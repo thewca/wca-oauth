@@ -1,6 +1,6 @@
 Package.describe({
   name: 'jfly:worldcubeassociation',
-  version: '1.2.0',
+  version: '1.2.1',
   summary: 'World Cube Association OAuth flow',
   git: 'https://github.com/jfly/meteor-worldcubeassociation-oauth.git'
 });
