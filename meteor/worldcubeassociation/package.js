@@ -2,7 +2,7 @@ Package.describe({
   name: 'jfly:worldcubeassociation',
   version: '1.2.2',
   summary: 'World Cube Association OAuth flow',
-  git: 'https://github.com/jfly/meteor-worldcubeassociation-oauth.git'
+  git: 'https://github.com/cubing/wca-oauth.git'
 });
 
 Package.onUse(function(api) {
