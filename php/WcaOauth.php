@@ -35,7 +35,8 @@ class WcaOauth
      * @param  array $headers    Headers to set in the request (optional)
      * @return array             JSON decoded array
      */
-    public function curlJson($url, $postParams = null, $headers = null) {
+    public function curlJson($url, $postParams = null, $headers = null)
+    {
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $url);
@@ -62,7 +63,8 @@ class WcaOauth
      * @param  [type] $code [description]
      * @return [type]       [description]
      */
-    public function fetchAccessToken($code) {
+    public function fetchAccessToken($code)
+    {
         $postParams = array(
             'code' => $code,
             'grant_type' => 'authorization_code',
@@ -82,7 +84,13 @@ class WcaOauth
         return $this;
     }
 
-    public function getUser() {
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
+
+    public function getUser()
+    {
         if (!$this->accessToken) {
             throw new Exception("You must call fetchAccessToken first.");
         }
@@ -91,6 +99,6 @@ class WcaOauth
           "Authorization: Bearer $this->accessToken",
         );
 
-        return $this->curlJson(self::USER_URI, null, $headers);
+        return $this->curlJson(self::USER_URI, null, $headers)->me;
     }
 }
