@@ -35,7 +35,7 @@ class WcaOauth
      * @param  array $headers    Headers to set in the request (optional)
      * @return array             JSON decoded array
      */
-    public function curlJson($url, $postParams = null, $headers = null)
+    protected function curlJson($url, $postParams = null, $headers = null)
     {
         $ch = curl_init();
 
@@ -55,7 +55,28 @@ class WcaOauth
 
         curl_close($ch);
 
-        return json_decode($result);
+        $jsonResult = json_decode($result);
+
+        $this->throwIfError($jsonResult);
+
+        return $jsonResult;
+    }
+
+    protected function throwIfError($jsonResult)
+    {
+        $error = "";
+
+        if (isset($jsonResult->error)) {
+            $error .= "Error: $jsonResult->error";
+        }
+
+        if (isset($jsonResult->error_description)) {
+            $error .= " ($jsonResult->error_description)";
+        }
+
+        if ($error) {
+            throw new WcaOauthException($error);
+        }
     }
 
     /**
@@ -75,10 +96,6 @@ class WcaOauth
 
         $jsonResult = $this->curlJson(self::ACCESS_TOKEN_URI, $postParams);
 
-        if(isset($jsonResult->error)) {
-            throw new Exception("$jsonResult->error_description ($jsonResult->error)");
-        }
-
         $this->accessToken = $jsonResult->access_token;
 
         return $this;
@@ -92,7 +109,7 @@ class WcaOauth
     public function getUser()
     {
         if (!$this->accessToken) {
-            throw new Exception("You must call fetchAccessToken first.");
+            throw new WcaOauthException("You must call fetchAccessToken first.");
         }
 
         $headers = array(
@@ -101,4 +118,9 @@ class WcaOauth
 
         return $this->curlJson(self::USER_URI, null, $headers)->me;
     }
+}
+
+class WcaOauthException extends Exception
+{
+
 }
