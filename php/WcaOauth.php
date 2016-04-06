@@ -22,7 +22,6 @@ class WcaOauth
     public function __construct($options)
     {
         $this->setOptions($options);
-        $this->checkRequiredOptionsSet();
     }
 
     protected function checkRequiredOptionsSet()
@@ -37,12 +36,10 @@ class WcaOauth
     protected function setOptions($options)
     {
         foreach ($options AS $key => $value) {
-            if (is_array($value)) {
-                $value = implode(' ', $value);
-            }
-
             $this->$key = $value;
         }
+
+        $this->checkRequiredOptionsSet();
     }
 
     /**
@@ -102,7 +99,7 @@ class WcaOauth
             'client_id' => $this->applicationId,
             'redirect_uri' => $this->redirectUri,
             'response_type' => 'code',
-            'scope' => $this->scope,
+            'scope' => implode(' ', $this->scope),
         ]);
 
         return sprintf("%s?%s", self::OAUTH_AUTHORIZE_URI, $params);
