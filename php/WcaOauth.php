@@ -3,11 +3,13 @@
 class WcaOauth
 {
     CONST ACCESS_TOKEN_URI = "https://www.worldcubeassociation.org/oauth/token";
+    CONST OAUTH_AUTHORIZE_URI = "https://www.worldcubeassociation.org/oauth/authorize";
     CONST USER_URI = "https://www.worldcubeassociation.org/api/v0/me";
 
     protected $applicationId;
-    protected $redirectUri;
     protected $applicationSecret;
+    protected $redirectUri;
+    protected $scope;
 
     protected static $requiredOptions = array(
         'applicationId',
@@ -19,13 +21,25 @@ class WcaOauth
 
     public function __construct($options)
     {
+        $this->setOptions($options);
+    }
+
+    protected function checkRequiredOptionsSet()
+    {
         foreach (self::$requiredOptions AS $value) {
-            if (!isset($options[$value])) {
+            if (!isset($this->$value)) {
                 throw new Exception("$value is a required option!");
             }
-
-            $this->$value = $options[$value];
         }
+    }
+
+    protected function setOptions($options)
+    {
+        foreach ($options AS $key => $value) {
+            $this->$key = $value;
+        }
+
+        $this->checkRequiredOptionsSet();
     }
 
     /**
@@ -77,6 +91,18 @@ class WcaOauth
         if ($error) {
             throw new WcaOauthException($error);
         }
+    }
+
+    public function generateOauthFlowUri()
+    {
+        $params = http_build_query([
+            'client_id' => $this->applicationId,
+            'redirect_uri' => $this->redirectUri,
+            'response_type' => 'code',
+            'scope' => implode(' ', $this->scope),
+        ]);
+
+        return sprintf("%s?%s", self::OAUTH_AUTHORIZE_URI, $params);
     }
 
     /**
