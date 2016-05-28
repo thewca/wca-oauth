@@ -12,6 +12,8 @@ WorldCubeAssociation.whitelistedFields = [
   'dob',
   'gender',
   'country_iso2',
+  'delegate_status',
+  'teams',
   'created_at',
   'updated_at',
   'avatar',

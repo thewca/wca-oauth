@@ -1,6 +1,6 @@
 Package.describe({
   name: 'jfly:accounts-worldcubeassociation',
-  version: '1.2.2',
+  version: '1.3.0',
   summary: 'An OAuth login service for worldcubeassociation.org',
   git: 'https://github.com/cubing/wca-oauth.git'
 });
@@ -12,7 +12,7 @@ Package.onUse(function(api) {
   // Export Accounts (etc) to packages using this one.
   api.imply('accounts-base', ['client', 'server']);
   api.use('accounts-oauth', ['client', 'server']);
-  api.use('jfly:worldcubeassociation@1.2.2', ['client', 'server']);
+  api.use('jfly:worldcubeassociation@1.3.0', ['client', 'server']);
   api.use('underscore', 'server');
 
   api.addFiles('worldcubeassociation_login_button.css', 'client');

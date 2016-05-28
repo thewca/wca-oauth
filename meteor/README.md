@@ -28,6 +28,11 @@ packages maintained by MDG.
 - Edit `package.js` and bump version number.
 - `meteor publish`
 
-## Updating http://wca-oauth-demo.meteor.com/ demo
+## Testing changes to accounts-worldcubeassociation
 
-- `meteor deploy http://wca-oauth-demo.meteor.com/` inside the `demo/` directory.
+- Create a demo/packages directory, and create a symlink to accounts-worldcubeassociation in there:
+```
+~/gitting/wca-oauth/meteor @kaladin> ls -l demo/packages/
+total 0
+lrwxrwxrwx 1 jeremy jeremy 35 May 28 13:21 accounts-worldcubeassociation -> ../../accounts-worldcubeassociation
+```
