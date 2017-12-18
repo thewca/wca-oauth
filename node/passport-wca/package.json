@@ -2,7 +2,7 @@
   "name": "passport-wca",
   "description": "WCA authentication strategy for Passport.",
   "main": "./lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "test": "node_modules/.bin/mocha --reporter spec --require test/bootstrap/node test/*.test.js"
   },
