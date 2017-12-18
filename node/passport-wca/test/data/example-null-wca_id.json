@@ -1,0 +1,28 @@
+{
+    "me": {
+        "class": "user",
+        "id": 8184,
+        "wca_id": null,
+        "name": "Caleb Hoover",
+        "gender": "m",
+        "country_iso2": "US",
+        "delegate_status": "candidate_delegate",
+        "created_at": "2016-01-12T23:29:21.000Z",
+        "updated_at": "2017-12-18T19:54:10.000Z",
+        "teams": [
+            {
+                "friendly_id": "wst",
+                "leader": false
+            }
+        ],
+        "avatar": {
+            "url": "https://staging.worldcubeassociation.org/assets/missing_avatar_thumb-f0ea801c804765a22892b57636af829edbef25260a65d90aaffbd7873bde74fc.png",
+            "thumb_url": "https://staging.worldcubeassociation.org/assets/missing_avatar_thumb-f0ea801c804765a22892b57636af829edbef25260a65d90aaffbd7873bde74fc.png",
+            "is_default": true
+        },
+        "dob": "1954-12-04",
+        "email": "8184@worldcubeassociation.org",
+        "region": "USA (Washington)",
+        "senior_delegate_id": 259
+    }
+}
